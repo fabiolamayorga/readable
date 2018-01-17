@@ -33,10 +33,12 @@ class PostView extends Component {
 
           {selectedPost.length > 0 && (
             selectedPost.map(post => (
-              <Post post={post} key={post.id} clickUpVote={clickUpVote} editThePost={editThePost} clickDownVote={clickDownVote}/>
+              <Post post={post} key={post.id} commentsCount={postComments.length} clickUpVote={clickUpVote} editThePost={editThePost} clickDownVote={clickDownVote}/>
           ))
           )}
+
           <RaisedButton onClick={() => toggleShowAllComments(postId)} label="SHOW COMMENTS"/>
+
           <div className="comments-container">
               {postComments.length > 0 && (
                 postComments.map(comment => (

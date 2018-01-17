@@ -13,7 +13,7 @@ function formatDate (timestamp) {
   return date.toLocaleString()
 }
 
-export default function Post ({ post , clickUpVote, clickDownVote, editThePost,deleteThePost }) {
+export default function Post ({ post , clickUpVote, clickDownVote, editThePost,deleteThePost, commentsCount }) {
   return (
 
         post.deleted === false && (
@@ -27,6 +27,10 @@ export default function Post ({ post , clickUpVote, clickDownVote, editThePost,d
               <div className="post-time">Date: {formatDate(post.timestamp)}</div>
               <div className="post-body">{post.body}</div>
               <div className="post-score">Score: {post.voteScore}</div>
+              {commentsCount > 0 && (
+                 <div className="post-comments-count">Comments Count: {commentsCount}</div>
+              )}
+
             </CardText>
             <EditPostView post={post} editThePost={editThePost}/>
             <RaisedButton onClick={()=> deleteThePost(post.id)} label="Delete Post" />
@@ -34,6 +38,6 @@ export default function Post ({ post , clickUpVote, clickDownVote, editThePost,d
           </Card>
       )
 
-      
+
   )
 }
